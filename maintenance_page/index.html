@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
 <style>
 :root{
   --gl-orange:#FE5100;
@@ -74,10 +77,6 @@ body {
   color: rgba(17,24,39,0.88);
 }
 
-.popup p:last-of-type{
-  margin-bottom: 0;
-}
-
 .cta {
   display: inline-block;
   margin-top: 20px;
@@ -91,13 +90,49 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.9px;
   box-shadow: 0 12px 26px rgba(254,81,0,0.22);
-  user-select: none;
   transition: transform .08s ease, opacity .08s ease;
 }
 
 .cta:active{
   transform: translateY(1px);
   opacity: 0.96;
+}
+
+.socials {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(17,24,39,0.18);
+  text-decoration: none;
+  color: var(--text);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-size: 14px;
+  transition: background .15s ease, transform .08s ease;
+}
+
+.social-btn i {
+  font-size: 16px;
+}
+
+.social-btn:hover {
+  background: rgba(17,24,39,0.05);
+}
+
+.social-btn:active {
+  transform: translateY(1px);
 }
 
 @media (max-width: 420px){
@@ -109,9 +144,9 @@ body {
   .popup h1{
     font-size: 26px;
   }
-  .cta{
+  .cta, .social-btn{
     width: 100%;
-    box-sizing: border-box;
+    justify-content: center;
   }
 }
 </style>
@@ -127,7 +162,20 @@ body {
   <h1>Stiamo migliorando GameLife 🧡</h1>
   <p>Il sito è <strong>temporaneamente offline</strong> per un aggiornamento interno del sistema. Lo shop non sarà disponibile per tutta la giornata di venerdì e sabato.</p>
   <p>Gli ordini effettuati <strong>sono al sicuro</strong> e verranno gestiti regolarmente. Grazie per la pazienza e per essere parte della <strong>community GameLife.</strong> Ci vediamo al prossimo login 🧡</p>
+  
   <a href="mailto:assistenza@gamelife.it" class="cta">Contatta l'assistenza</a>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/gamelifeitalia/" class="social-btn" target="_blank">
+      <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/gamelifeitalia/" class="social-btn" target="_blank">
+      <i class="fa-brands fa-facebook-f"></i> Facebook
+    </a>
+    <a href="https://www.tiktok.com/@gamelifeitalia" class="social-btn" target="_blank">
+      <i class="fa-brands fa-tiktok"></i> TikTok
+    </a>
+  </div>
 </div>
 
 </body>
