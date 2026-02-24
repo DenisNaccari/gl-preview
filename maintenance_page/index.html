@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
@@ -21,11 +20,16 @@
   --border:rgba(17,24,39,0.10);
 }
 
+html, body{
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: var(--text);
   background: #0B0F19;
 }
@@ -37,21 +41,32 @@ body {
   filter: blur(12px);
   transform: scale(1.05);
   opacity: 0.95;
+  z-index: 0;
 }
 
 .overlay {
   position: fixed;
   inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.60), var(--overlay));
+  z-index: 1;
+}
+
+.page{
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 14px;
+  box-sizing: border-box;
+  gap: 18px;
 }
 
 .popup {
-  position: relative;
-  z-index: 10;
+  width: 100%;
   max-width: 480px;
-  margin: auto;
-  top: 50%;
-  transform: translateY(-50%);
   background: #ffffff;
   border-radius: 50px;
   padding: 32px 24px;
@@ -138,32 +153,15 @@ body {
   transform: translateY(1px);
 }
 
-@media (max-width: 420px){
-  .popup{
-    margin: 0 14px;
-    padding: 28px 18px;
-    border-radius: 34px;
-  }
-  .popup h1{
-    font-size: 26px;
-  }
-  .cta, .social-btn{
-    width: 100%;
-    justify-content: center;
-  }
-}
-
+/* Legal links in-flow, no overlap */
 .legal-links{
-  position: fixed;
-  bottom: 18px;
-  left: 0;
-  width: 100%;
   display: flex;
   justify-content: center;
   gap: 18px;
-  z-index: 9999;
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
+  margin-top: 2px;
+  padding-bottom: 8px;
 }
 
 .legal-links a{
@@ -177,6 +175,20 @@ body {
   opacity: 1;
   text-decoration: underline;
 }
+
+@media (max-width: 420px){
+  .popup{
+    padding: 28px 18px;
+    border-radius: 34px;
+  }
+  .popup h1{
+    font-size: 26px;
+  }
+  .cta, .social-btn{
+    width: 100%;
+    justify-content: center;
+  }
+}
 </style>
 </head>
 
@@ -185,62 +197,76 @@ body {
 <div class="background"></div>
 <div class="overlay"></div>
 
-<div class="popup">
-  <img src="logo-gamelife.svg" alt="GameLife" style="width:140px; margin-bottom:20px;">
+<div class="page">
 
-  <h1>Manutenzione in corso 🧡</h1>
+  <div class="popup">
+    <img src="logo-gamelife.svg" alt="GameLife" style="width:140px; margin-bottom:20px;">
 
-  <p>
-    Stiamo lavorando a un aggiornamento del sistema.
-    Per questo motivo lo shop online non sarà disponibile per l’intera giornata di
-    <strong>sabato 28 febbraio</strong> e <strong>domenica 1 marzo</strong>.
-  </p>
-  
-  <p>
-    Contiamo di tornare operativi il prima possibile: prova pure ad accedere già da
-    <strong>domenica 1 marzo</strong>, potresti trovarci di nuovo online!
-  </p>
+    <h1>Manutenzione in corso 🧡</h1>
 
-  <p>
-    🎯 Tutti gli ordini già effettuati <strong>sono al sicuro</strong> e verranno gestiti regolarmente.
-    Per qualsiasi necessità, il nostro <strong>Servizio Clienti</strong> è sempre a tua disposizione.
-  </p>
+    <p>
+      Stiamo lavorando a un aggiornamento del sistema.
+      Per questo motivo lo shop online non sarà disponibile per l’intera giornata di
+      <strong>sabato 28 febbraio</strong> e <strong>domenica 1 marzo</strong>.
+    </p>
 
-  <p>
-    Grazie per la pazienza e per essere parte della community Gamelife.
-    Ci vediamo al prossimo login 🧡 WE PLAY TOGETHER
-  </p>
+    <p>
+      Contiamo di tornare operativi il prima possibile: prova pure ad accedere già da
+      <strong>domenica 1 marzo</strong>, potresti trovarci di nuovo online!
+    </p>
 
-  <a href="https://gamelifesrl.zendesk.com/hc/it" class="cta">Contatta l'assistenza</a>
+    <p>
+      🎯 Tutti gli ordini già effettuati <strong>sono al sicuro</strong> e verranno gestiti regolarmente.
+      Per qualsiasi necessità, il nostro <strong>Servizio Clienti</strong> è sempre a tua disposizione.
+    </p>
 
-  <div class="socials">
-    <a href="https://www.instagram.com/gamelifeitalia/" class="social-btn" target="_blank" rel="noopener">
-      <i class="fa-brands fa-instagram"></i> Instagram
-    </a>
-    <a href="https://www.facebook.com/gamelifeitalia/" class="social-btn" target="_blank" rel="noopener">
-      <i class="fa-brands fa-facebook-f"></i> Facebook
-    </a>
-    <a href="https://www.tiktok.com/@gamelifeitalia" class="social-btn" target="_blank" rel="noopener">
-      <i class="fa-brands fa-tiktok"></i> TikTok
-    </a>
+    <p>
+      Grazie per la pazienza e per essere parte della community Gamelife.
+      Ci vediamo al prossimo login 🧡 WE PLAY TOGETHER
+    </p>
+
+    <a href="https://gamelifesrl.zendesk.com/hc/it" class="cta">Contatta l'assistenza</a>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/gamelifeitalia/" class="social-btn" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/gamelifeitalia/" class="social-btn" target="_blank" rel="noopener">
+        <i class="fa-brands fa-facebook-f"></i> Facebook
+      </a>
+      <a href="https://www.tiktok.com/@gamelifeitalia" class="social-btn" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+    </div>
   </div>
+
+  <div class="legal-links">
+    <a href="https://www.iubenda.com/privacy-policy/92054710" target="_blank" rel="noopener">Privacy</a>
+    <a href="https://www.iubenda.com/privacy-policy/92054710/cookie-policy" target="_blank" rel="noopener">Cookie</a>
+  </div>
+
 </div>
 
-<div class="legal-links">
-  <a href="https://www.iubenda.com/privacy-policy/92054710" target="_blank" rel="noopener">
-    Privacy
-  </a>
-  <a href="https://www.iubenda.com/privacy-policy/92054710/cookie-policy" target="_blank" rel="noopener">
-    Cookie
-  </a>
-</div>
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=04760dee-b518-403b-be3d-d03f527cde9d"></script>
 
-<!-- Start of gamelifesrl Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=04760dee-b518-403b-be3d-d03f527cde9d"> </script>
-<!-- End of gamelifesrl Zendesk Widget script -->
+<script>
+function loadScript(a){
+  var b=document.getElementsByTagName("head")[0],c=document.createElement("script");
+  c.type="text/javascript";
+  c.src="https://tracker.metricool.com/resources/be.js";
+  c.onreadystatechange=a;
+  c.onload=a;
+  b.appendChild(c);
+}
+loadScript(function(){beTracker.t({hash:"960943831e0d504b7b9b78195705dfe7"})});
+</script>
 
-<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"960943831e0d504b7b9b78195705dfe7"})});</script>
-<script type="text/javascript">var _iub = _iub || {}; _iub.cons_instructions = _iub.cons_instructions || []; _iub.cons_instructions.push(["init", {api_key: "vc7kT3Km4oHK9bsSEiW7EKlwkQ7p9veB"}]);</script><script type="text/javascript" src="https://cdn.iubenda.com/cons/iubenda_cons.js" async></script>
+<script type="text/javascript">
+var _iub = _iub || {};
+_iub.cons_instructions = _iub.cons_instructions || [];
+_iub.cons_instructions.push(["init", {api_key: "vc7kT3Km4oHK9bsSEiW7EKlwkQ7p9veB"}]);
+</script>
+<script type="text/javascript" src="https://cdn.iubenda.com/cons/iubenda_cons.js" async></script>
 
 </body>
 </html>
